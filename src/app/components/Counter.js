@@ -1,4 +1,5 @@
 "use client"
+import { Progress } from '@nextui-org/progress';
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -34,7 +35,9 @@ const Counter = ({isRunning, setIsRunning, setRounds, rounds}) => {
 
 
   return (
-    <p className='!text-4xl text-green-500 font-semibold'>{seconds}</p>
+    <>
+      <p className='!text-4xl text-green-500 font-semibold'>{seconds}</p>
+    </>
   )
 }
 

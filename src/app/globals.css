@@ -34,6 +34,9 @@
 
       --radius: 0.5rem;
     }
+      html {
+        -webkit-tap-highlight-color: transparent;
+      }
 
     .dark {
       --background: 222.2 84% 4.9%;

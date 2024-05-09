@@ -4,8 +4,8 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-const Counter = ({isRunning, setIsRunning, setRounds, rounds}) => {
-  const [seconds, setSeconds] = useState(60);
+const Counter = ({isRunning, setIsRunning, setRounds, rounds, }) => {
+  const [seconds, setSeconds] = useState(5);
 
   useEffect(() => {
     if (!isRunning) return
@@ -17,7 +17,7 @@ const Counter = ({isRunning, setIsRunning, setRounds, rounds}) => {
       intervalId = setInterval(() => {
         setSeconds(prevSeconds => {
           if (prevSeconds === 0) {
-            console.log("zero");
+
             clearInterval(intervalId); 
             setRounds( rounds+1);
             setSeconds(5)
@@ -33,21 +33,24 @@ const Counter = ({isRunning, setIsRunning, setRounds, rounds}) => {
     return () => clearInterval(intervalId);
   }, [isRunning]);
 
-
+  const yellow = "stroke-yellow-500"
+  const red = "stroke-red-500"
+  red 
+  yellow 
   return (
     <>
       <CircularProgress
         classNames={{
           svg: "w-48 h-48 drop-shadow-md",
-          indicator: "stroke-green-500 ",
+          indicator: `stroke-${seconds > 5*0.6 ? "green" : seconds > 5*0.3 ? "yellow" : "red"}-500 `,
           track: "stroke-white/50",
           value: "text-3xl font-semibold text-white",
         }}
         value={(seconds)}
-        maxValue={60}
+        maxValue={5}
         strokeWidth={4}
         showValueLabel={true}
-              formatOptions={{ style: "unit", unit: "second" }}
+        formatOptions={{ style: "unit", unit: "second" }}
 
         
       />    

@@ -25,7 +25,7 @@ useEffect(() => {
 },[rounds])
 
   return (
-    <Drawer open={open} onOpenChange={setOpen}>
+    <Drawer open={open} onOpenChange={setOpen} shouldScaleBackground>
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>CHEERS!!</DrawerTitle>

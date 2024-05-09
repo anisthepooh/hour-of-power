@@ -7,10 +7,28 @@ import { CircularProgress } from "@nextui-org/progress";
 import { AuroraBackground } from "../components/ui/aurora-background"
 import { motion } from "framer-motion";
 import preventPinchZoom from "@/lib/preventPinchZoom";
+import {CirclePause, CirclePlay} from 'lucide-react'
+
 
 export default function Home() {
   const [isRunning, setIsRunning] = useState(false)
   const [rounds, setRounds] = useState(0)
+
+  const renderButtonText = () => {
+
+    if (isRunning) {
+      return <>
+      <CirclePause className="pr-2" />
+      Pause
+      </>
+    } else {
+      return <>
+      <CirclePlay className="pr-2" />
+      Start
+      </>
+    }
+
+  }
   
   preventPinchZoom()
   return (
@@ -40,11 +58,13 @@ export default function Home() {
             />    
           <p>Roundes: {rounds}</p>
           <Counter isRunning={isRunning} setIsRunning={setIsRunning} setRounds={setRounds} rounds={rounds} />
-          <Button onClick={() => setIsRunning(!isRunning)}>{isRunning ? "Stop" : "Start"}</Button>
+          <Button className="w-64" onClick={() => setIsRunning(!isRunning)}> {renderButtonText()} </Button>
           <Alert rounds={rounds} isRunning={isRunning} setIsRunning={setIsRunning} />
         </main>
       </motion.div>
     </AuroraBackground>
+
+    
 
   );
 }

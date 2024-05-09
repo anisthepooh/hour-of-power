@@ -1,11 +1,11 @@
 "use client"
-import { Progress } from '@nextui-org/progress';
+import { CircularProgress, Progress } from '@nextui-org/progress';
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
 
 const Counter = ({isRunning, setIsRunning, setRounds, rounds}) => {
-  const [seconds, setSeconds] = useState(5);
+  const [seconds, setSeconds] = useState(60);
 
   useEffect(() => {
     if (!isRunning) return
@@ -36,7 +36,21 @@ const Counter = ({isRunning, setIsRunning, setRounds, rounds}) => {
 
   return (
     <>
-      <p className='!text-4xl text-green-500 font-semibold'>{seconds}</p>
+      <CircularProgress
+        classNames={{
+          svg: "w-48 h-48 drop-shadow-md",
+          indicator: "stroke-green-500 ",
+          track: "stroke-white/50",
+          value: "text-3xl font-semibold text-white",
+        }}
+        value={(seconds)}
+        maxValue={60}
+        strokeWidth={4}
+        showValueLabel={true}
+              formatOptions={{ style: "unit", unit: "second" }}
+
+        
+      />    
     </>
   )
 }

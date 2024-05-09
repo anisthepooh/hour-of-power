@@ -35,6 +35,7 @@ const Counter = ({isRunning, setIsRunning, setRounds, rounds, }) => {
 
   const yellow = "stroke-yellow-500"
   const red = "stroke-red-500"
+  const green = "stroke-green-500"
   red 
   yellow 
   return (

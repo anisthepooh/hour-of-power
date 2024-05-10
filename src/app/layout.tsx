@@ -41,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="overscroll-y-none touch-none	">
-      <body className={inter.className}>
+      <body className="bg-green-500">
         <NextUIProvider>
           {children}
         </NextUIProvider>

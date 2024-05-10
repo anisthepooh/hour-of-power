@@ -26,14 +26,11 @@ export const metadata: Metadata = {
     { rel: "apple-touch-icon", url: "icons/icon-128x128.png" },
     { rel: "icon", url: "icons/icon-128x128.png" },
   ],
+  appleWebApp: {
+    statusBarStyle: 'black-translucent',
+  }
 };
 
-export const viewport: Viewport = {
-  initialScale: 1,
-  maximumScale: 1,
-  themeColor: 'rgb(0, 17, 82)',
-  userScalable: false
-}
 
 
 

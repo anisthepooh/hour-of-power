@@ -24,6 +24,7 @@
     "react-dom": "^18",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
+    "tailwindcss-safe-area": "^0.5.1",
     "three": "^0.164.1",
     "vaul": "^0.9.1"
   },

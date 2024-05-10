@@ -130,7 +130,7 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), nextui(), addVariablesForColors],
+  plugins: [require("tailwindcss-animate"), nextui(), addVariablesForColors, require('tailwindcss-safe-area')],
 } satisfies Config
 
 function addVariablesForColors({ addBase, theme }: any) {

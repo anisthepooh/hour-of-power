@@ -17,8 +17,27 @@ export default function Home() {
   const [openSettingsDialog, setOpenSettingsDialog] = useState(false)
   const [state, setState] = useState({showInstallMessage: false})
 
- 
- 
+  interface NavigatorWithStandalone extends Navigator {
+    standalone?: boolean;
+  }
+  
+  if (typeof window != 'undefined' ) {
+  const isIos = () => {
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    return /iphone|ipad|ipod/.test(userAgent);
+  };
+  
+  const isInStandaloneMode = () => {
+    const navigatorWithStandalone = window.navigator as NavigatorWithStandalone;
+    return 'standalone' in navigatorWithStandalone && navigatorWithStandalone.standalone;
+  };
+  
+  if (isIos() && !isInStandaloneMode()) {
+    setState({ showInstallMessage: true }); 
+  }
+
+}
+  
 
   
   useEffect(() => {
@@ -44,14 +63,13 @@ export default function Home() {
 
   
 
-//const jsConfetti = new JSConfetti()
-
 const handleClick = () => {
-  // if (!isRunning) {
-  //   jsConfetti.addConfetti({
-  //     emojis: ['🍺', '🍻',],
-  //   })
-  // }
+  if (!isRunning && typeof window != 'undefined') {
+    const jsConfetti = new JSConfetti()
+    jsConfetti.addConfetti({
+      emojis: ['🍺', '🍻',],
+    })
+  }
   setIsRunning(!isRunning)
 }
 

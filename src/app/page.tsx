@@ -21,6 +21,7 @@ export default function Home() {
     standalone?: boolean;
   }
   
+  if (typeof window != 'undefined') {
   const isIos = () => {
     const userAgent = window.navigator.userAgent.toLowerCase();
     return /iphone|ipad|ipod/.test(userAgent);
@@ -34,6 +35,8 @@ export default function Home() {
   if (isIos() && !isInStandaloneMode()) {
     setState({ showInstallMessage: true }); 
   }
+
+}
   
 
   

@@ -1,10 +1,8 @@
-'use client'
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import {NextUIProvider} from "@nextui-org/react";
 import Head from "next/head";
-import { useState } from "react";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -42,19 +40,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [state, setState] = useState({showInstallMessage: false})
-
-  const isIos = () => {
-    const userAgent = window.navigator.userAgent.toLowerCase();
-    return /iphone|ipad|ipod/.test( userAgent );
-  }
-  // Detects if device is in standalone mode
-  const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
   
-  // Checks if should display install popup notification:
-  if (isIos() && !isInStandaloneMode()) {
-    setState({ showInstallMessage: true });
-  }
   
   return (
     <html lang="en" className="overscroll-y-none touch-none	">

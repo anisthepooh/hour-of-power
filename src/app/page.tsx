@@ -15,6 +15,19 @@ export default function Home() {
   const [rounds, setRounds] = useState(0)
   const [totalRounds, setTotalRounds] = useState<number>(0)
   const [openSettingsDialog, setOpenSettingsDialog] = useState(false)
+  const [state, setState] = useState({showInstallMessage: false})
+
+  const isIos = () => {
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    return /iphone|ipad|ipod/.test( userAgent );
+  }
+  // Detects if device is in standalone mode
+  const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+  
+  // Checks if should display install popup notification:
+  if (isIos() && !isInStandaloneMode()) {
+    setState({ showInstallMessage: true });
+  }
 
   
   useEffect(() => {

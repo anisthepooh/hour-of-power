@@ -44,14 +44,14 @@ export default function Home() {
 
   
 
-const jsConfetti = new JSConfetti()
+//const jsConfetti = new JSConfetti()
 
 const handleClick = () => {
-  if (!isRunning) {
-    jsConfetti.addConfetti({
-      emojis: ['🍺', '🍻',],
-    })
-  }
+  // if (!isRunning) {
+  //   jsConfetti.addConfetti({
+  //     emojis: ['🍺', '🍻',],
+  //   })
+  // }
   setIsRunning(!isRunning)
 }
 

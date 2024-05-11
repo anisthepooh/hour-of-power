@@ -10,6 +10,7 @@ import {
   DialogClose,
 } from "@/components/ui/dialog"
 import SettingsForm from './SettingsForm'
+import Rules from './Rules'
 
 
 
@@ -27,11 +28,9 @@ const PreGameSettingsDialog = ({
         }}  
       >
         <DialogHeader>
-          <DialogTitle>Klar til at tage en om Hour of Power?</DialogTitle>
+          <DialogTitle>Klar til at tage en omgang Hour of Power?</DialogTitle>
           <DialogDescription>
-            Reglerne er simple: 
-            Hvert minut ringer klokken, hvorefter i skåler i et shot øl. Når man ikke at drikke indenfor minuttet, får man et staf shot.
-            Indstil hvor mange runder du gerne vil spille for at starte. 
+            <Rules />
           </DialogDescription>
         </DialogHeader>
         <SettingsForm 

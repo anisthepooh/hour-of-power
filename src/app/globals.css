@@ -34,8 +34,14 @@
 
       --radius: 0.5rem;
     }
-      html {
+
+      body {
+        -webkit-user-select: none;
         -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+
+
+
       }
 
     .dark {

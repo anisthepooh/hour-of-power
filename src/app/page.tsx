@@ -51,7 +51,7 @@ export default function Home() {
         }}
         className="relative px-4 z-10 h-dvh"
       >
-        <main className="flex flex-col items-center justify-between py-8 h-full" vaul-drawer-wrapper="">
+        <main className="flex flex-col items-center justify-center gap-10 py-8 h-full" vaul-drawer-wrapper="">
           <p className="text-white text-2xl font-semibold">{`Runde nummer: ${rounds} ud af ${totalRounds}`}</p>
           
           <Counter isRunning={isRunning} setIsRunning={setIsRunning} setRounds={setRounds} rounds={rounds} />

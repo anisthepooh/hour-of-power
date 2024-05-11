@@ -15,15 +15,15 @@ export default function Home() {
   const [totalRounds, setTotalRounds] = useState<number>(0)
   const [openSettingsDialog, setOpenSettingsDialog] = useState(false)
 
+  
+  useEffect(() => {
+    setOpenSettingsDialog(true)
+    
+    return () => setOpenSettingsDialog(false)
+    
+  },[])
+  
   const renderButtonText = () => {
-
-    useEffect(() => {
-      setOpenSettingsDialog(true)
-
-      return () => setOpenSettingsDialog(false)
-
-    },[])
-
     if (isRunning) {
       return <>
       <CirclePause className="pr-2" />

@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import {CirclePause, CirclePlay} from 'lucide-react'
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import PreGameSettingsDialog from './components/PreGameSettingsDialog'
+import JSConfetti from 'js-confetti'
 
 
 export default function Home() {
@@ -35,8 +36,22 @@ export default function Home() {
       Start
       </>
     }
-
   }
+
+  
+
+const jsConfetti = new JSConfetti()
+
+const handleClick = () => {
+  if (!isRunning) {
+    jsConfetti.addConfetti({
+      emojis: ['🍺', '🍻',],
+    })
+  }
+  setIsRunning(!isRunning)
+}
+
+
   
   //preventPinchZoom()
   return (
@@ -55,7 +70,7 @@ export default function Home() {
           <p className="text-white text-2xl font-semibold">{`Runde nummer: ${rounds} ud af ${totalRounds}`}</p>
           
           <Counter isRunning={isRunning} setIsRunning={setIsRunning} setRounds={setRounds} rounds={rounds} />
-          <Button className="w-64 hover:after:scale-150" onClick={() => setIsRunning(!isRunning)}> {renderButtonText()} </Button>
+          <Button className="w-64 hover:after:scale-150" onClick={() => handleClick() }> {renderButtonText()} </Button>
           <Alert rounds={rounds} isRunning={isRunning} setIsRunning={setIsRunning} />
           <PreGameSettingsDialog 
             openSettingsDialog={openSettingsDialog} 

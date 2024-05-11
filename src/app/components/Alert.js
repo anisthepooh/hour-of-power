@@ -1,3 +1,4 @@
+"use client"
 import { Button } from "@/components/ui/button"
 import {
   Drawer,
@@ -15,6 +16,9 @@ import React, { useEffect, useState } from 'react'
 const Alert = ({rounds, setIsRunning, isRunning}) => {
 const [open, setOpen] = useState(false)
 
+
+
+
 useEffect(() => {
 
   if (rounds >= 1) {
@@ -25,7 +29,7 @@ useEffect(() => {
 },[rounds])
 
   return (
-    <Drawer open={open} onOpenChange={setOpen} shouldScaleBackground>
+    <Drawer open={open} onOpenChange={setOpen} shouldScaleBackground >
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>CHEERS!!</DrawerTitle>

@@ -25,7 +25,7 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ setTotalRounds, setOpenSett
     <form onSubmit={handleSubmit}>
       <Label>Antal runder:</Label>
       <Input type="number" onChange={handleChange} value={value.toString()} className='mb-2 mt-1' />
-      <Button type="submit" size="lg" className='w-full' disabled={value < 1}>Start Spil</Button>
+      <Button type="submit" size="lg" className='w-full text-base' disabled={value < 1}>Start Spil</Button>
     </form>
   );
 };

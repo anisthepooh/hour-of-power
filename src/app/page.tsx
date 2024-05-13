@@ -15,6 +15,7 @@ export default function Home() {
   const [rounds, setRounds] = useState(0)
   const [totalRounds, setTotalRounds] = useState<number>(0)
   const [openSettingsDialog, setOpenSettingsDialog] = useState(false)
+  const [timer, setTimer] = useState(30)
   const [state, setState] = useState({showInstallMessage: false})
 
 
@@ -70,13 +71,21 @@ const handleClick = () => {
         <main className="flex flex-col items-center justify-center gap-10 py-8 h-full" vaul-drawer-wrapper="">
           <p className="text-white text-2xl font-semibold">{`Runde nummer: ${rounds} ud af ${totalRounds}`}</p>
           
-          <Counter isRunning={isRunning} setIsRunning={setIsRunning} setRounds={setRounds} rounds={rounds} />
+          <Counter 
+            isRunning={isRunning} 
+            setIsRunning={setIsRunning} 
+            setRounds={setRounds} 
+            rounds={rounds} 
+            timer={timer}
+          />
           <Button className="w-64 hover:after:scale-150" onClick={() => handleClick() }> {renderButtonText()} </Button>
           <Alert rounds={rounds} isRunning={isRunning} setIsRunning={setIsRunning} />
           <PreGameSettingsDialog 
             openSettingsDialog={openSettingsDialog} 
             setOpenSettingsDialog={setOpenSettingsDialog}
             setTotalRounds={setTotalRounds}
+            timer={timer}
+            setTimer={setTimer}
           />
         </main>
         </motion.div>

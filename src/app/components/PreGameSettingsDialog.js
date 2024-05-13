@@ -18,6 +18,8 @@ const PreGameSettingsDialog = ({
   openSettingsDialog, 
   setOpenSettingsDialog,
   setTotalRounds,
+  timer,
+  setTimer
 }) => {
   return (
     <Dialog open={openSettingsDialog} onOpenChange={setOpenSettingsDialog}  >
@@ -36,6 +38,8 @@ const PreGameSettingsDialog = ({
         <SettingsForm 
           setTotalRounds={setTotalRounds} 
           setOpenSettingsDialog={setOpenSettingsDialog} 
+          timer={timer}
+          setTimer={setTimer}
           />
       </DialogContent>
     </Dialog>

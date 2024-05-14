@@ -14,6 +14,10 @@ const Counter = ({
   const [seconds, setSeconds] = useState(timer);
 
   useEffect(() => {
+    setSeconds(timer)
+  },[timer])
+
+  useEffect(() => {
     if (!isRunning) return
 
     

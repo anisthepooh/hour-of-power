@@ -6,8 +6,8 @@ import Alert from "./components/Alert"
 import { motion } from "framer-motion";
 import {CirclePause, CirclePlay} from 'lucide-react'
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
-import PreGameSettingsDialog from './components/PreGameSettingsDialog'
 import JSConfetti from 'js-confetti'
+import PreGameSettingsDialog from './components/SettingsForm/PreGameSettingsDialog'
 
 
 export default function Home() {
@@ -80,7 +80,7 @@ const handleClick = () => {
           />
           <Button className="w-64 hover:after:scale-150" onClick={() => handleClick() }> {renderButtonText()} </Button>
           <Alert rounds={rounds} isRunning={isRunning} setIsRunning={setIsRunning} />
-          <PreGameSettingsDialog 
+          <PreGameSettingsDialog
             openSettingsDialog={openSettingsDialog} 
             setOpenSettingsDialog={setOpenSettingsDialog}
             setTotalRounds={setTotalRounds}

@@ -78,7 +78,6 @@ const SettingsForm: React.FC<SettingsFormProps> = ({
         type="submit" 
         size="lg" 
         className='w-full !text-base mt-8' 
-        disabled={}
       >
           Start Spil
       </Button> 

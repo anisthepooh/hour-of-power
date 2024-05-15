@@ -6,17 +6,13 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
-  DialogClose,
 } from "@/components/ui/dialog"
-import SettingsForm from './SettingsForm'
 import StepOne from './StepOne'
 import StepTwo from './StepTwo'
 import { Button } from '@/components/ui/button'
-import Stepper from '@/components/ui/Stepper'
 import { Progress } from '@nextui-org/progress'
 import { cn } from '@/lib/utils'
-import { ArrowBigLeft, ArrowBigRight } from 'lucide-react'
+
 
 
 

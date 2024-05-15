@@ -1,8 +1,9 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState  } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Slider, SliderValue } from '@nextui-org/react';
+import { useForm, SubmitHandler, Controller } from 'react-hook-form';
+import { Slider } from '@/components/ui/slider';
 
 interface SettingsFormProps {
   setTotalRounds: (totalRounds: number) => void;
@@ -11,71 +12,76 @@ interface SettingsFormProps {
   setTimer: (timer: number) => void; 
 }
 
+type Inputs = {
+  rounds: number
+  time: number
+}
+
 
 const SettingsForm: React.FC<SettingsFormProps> = ({ 
   setTotalRounds, 
   setOpenSettingsDialog,
-  timer,
   setTimer,
 }) => {
-  const [value, setValue] = useState<string>('')
+  const { register, handleSubmit, control } = useForm<Inputs>() 
+  const [value, setValue] = useState<number>(30)
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const totalRounds = parseInt(value); 
-    if (!isNaN(totalRounds)) { 
-      setTotalRounds(totalRounds);
-      setOpenSettingsDialog(false);
+  const onSubmit: SubmitHandler<Inputs> = (data: Inputs) => {
+    const totalRounds = data.rounds
+    const totalTime = data.time
+    
+    setTotalRounds(totalRounds);
+    if (Array.isArray(totalTime)) {
+      setTimer(totalTime[0]);
+    
     }
-  };
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-  };
-
-  const handleChangeRange = (value: SliderValue) => {
-    if (typeof value === 'number') {
-      // value is a single number
-      setTimer(value);
-    } else if (Array.isArray(value)) {
-      // value is an array
-      if (value.length > 0 && typeof value[0] === 'number') {
-        // value[0] is a number
-        setTimer(value[0]);
-      } else {
-        // handle unexpected case
-        console.error('Invalid SliderValue:', value);
-      }
-    } else {
-      // handle unexpected case
-      console.error('Invalid SliderValue:', value);
-    }
-  };
-  
+    setOpenSettingsDialog(false);
+  }  
   
   return (
-    <form onSubmit={handleSubmit} className='flex flex-col'>
-      <Label>Antal runder:</Label>
+    <form
+      onSubmit={handleSubmit(onSubmit)} 
+      className='flex flex-col'
+    >
+      <Label className='text-left'>Antal runder:</Label>
       <Input 
         type="number" 
-        value={value}
-        onChange={handleChange} 
         className='mb-2 mt-1' 
         pattern="[0-9]*" 
         inputMode="numeric" 
+        defaultValue={30} 
+        {...register("rounds")}
       />
-      <span className='flex justify-between mt-4'>
+      
+      <span className='flex justify-between mt-4 mb-2'>
         <Label>Sekunder pr. runde</Label>
-        <Label>{`${timer} sek.`}</Label>
+        <Label>{`${value} sek.`}</Label>
       </span>
-      <Slider
-        maxValue={60}
-        minValue={10}
-        showTooltip={true}
-        defaultValue={timer}
-        onChange={(value) => handleChangeRange(value)}
-      />
-      <Button type="submit" size="lg" className='w-full !text-base mt-4' disabled={!value.trim()}>Start Spil</Button> {/* Use !value.trim() to disable button if value is empty */}
+      <Controller
+        control={control}
+        name="time"
+        defaultValue={30}
+        render={({ field: { value, onChange } }) => (
+          <Slider 
+            min={10}
+            max={60}
+            step={1}
+            defaultValue={[value]}
+            onValueChange={(value) => {
+              onChange(value) 
+              setValue(value[0])
+            }}
+          />
+        )}
+      /> 
+      <Button 
+        type="submit" 
+        size="lg" 
+        className='w-full !text-base mt-8' 
+        disabled={}
+      >
+          Start Spil
+      </Button> 
     </form>
   );
 };

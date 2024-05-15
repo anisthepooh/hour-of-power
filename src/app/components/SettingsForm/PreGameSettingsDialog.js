@@ -66,7 +66,7 @@ const PreGameSettingsDialog = ({
           <DialogTitle className='!my-4'>Klar til at tage en omgang Hour of Power?</DialogTitle>
           <DialogDescription>
             { renderStep() }
-            <div className='!my-4'>
+            <div className='!my-2'>
             {step >= 2 && <Button variant="secondary" size="lg" className='w-full !text-base mt-4' onClick={() => setStep(step - 1)}>Tilbage </Button>}
             {step != 2 && <Button variant="default" size="lg" className='w-full !text-base mt-4' onClick={() => setStep(step + 1)}>Forsæt  </Button>}
             </div>
